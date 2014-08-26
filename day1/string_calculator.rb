@@ -15,7 +15,7 @@ module StringCalculator
         elsif x < 0
           raise "#{x} is not valid."
         else
-          "error"
+          x
         end 
       end
       
