@@ -1,29 +1,33 @@
+# StringCalculator Module
+#
+# Module takes a string of integers, separates them and sums them together.
 module StringCalculator
   def self.add(string)
-    if string.length <= 1
-      
-      string.to_i
-      
-    elsif string.length > 1
-      split_string = self.split_string(string)
-      
-      int_array = self.str_arr_to_int_arr(split_string)
-      
-      int_array.each do |x|
-        if x > 1000 
-          x == 0 
-        elsif x < 0
-          raise "#{x} is not valid."
-        else
-          x
-        end 
-      end
-      
-      summed_string = self.array_sum_method(int_array)
-      
-      summed_string
+    split_string = split_string(string)
+    int_array = str_arr_to_int_arr(split_string)
+
+    int_array.each do |x|
+      greater_than_1000(x)
+      negative_number(x)
+    end
+
+    summed_string = array_sum_method(int_array)
+    summed_string
+  end
+
+  def self.greater_than_1000(num)
+    if num > 1000
+      num == 0
     else
-      "error"
+      num
+    end
+  end
+
+  def self.negative_number(num)
+    if num < 0
+      raise '#{num} is not valid.'
+    else
+      num
     end
   end
   
@@ -34,6 +38,14 @@ module StringCalculator
     else
       string.split(/[\n]+/)
       
+    end
+  end
+  
+  def self.length_one_or_less(string)
+    if string.length <= 1
+      string.to_i
+    else
+      add(string)
     end
   end
   
@@ -50,10 +62,8 @@ module StringCalculator
   def self.array_sum_method(array)
     sum = 0
     
-    array.each { |x| sum = x + sum if x > 0 && x < 1000}
+    array.each { |x| sum = x + sum if x > 0 && x < 1000 }
         
     sum
   end
 end
-
-
