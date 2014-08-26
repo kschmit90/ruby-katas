@@ -38,4 +38,14 @@ describe StringCalculator do
     expect(StringCalculator.add(string)).to eql(12)
   end
   
+  it 'should ignore the number if it is greater than 1000' do
+    string = '1002, 35'
+    expect(StringCalculator.add(string)).to eql(35)
+  end
+
+  it 'should raise an error if number is negative' do
+    string = '4, -3, 5'
+    expect{ raise "-3 is not valid." }.to raise_error(RuntimeError)
+  end
+  
 end

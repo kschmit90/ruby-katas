@@ -9,6 +9,10 @@ module StringCalculator
       
       int_array = self.str_arr_to_int_arr(split_string)
       
+      int_array.each do |x|
+        raise "#{x} is not valid." if x < 0
+      end
+      
       summed_string = self.array_sum_method(int_array)
       
       summed_string
@@ -40,10 +44,8 @@ module StringCalculator
   def self.array_sum_method(array)
     sum = 0
     
-    array.each do |x|
-      sum = x + sum
-    end
-    
+    array.each { |x| sum = x + sum if x > 0 && x < 1000}
+        
     sum
   end
 end
