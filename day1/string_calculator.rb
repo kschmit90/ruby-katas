@@ -4,13 +4,19 @@ module StringCalculator
       
       string.to_i
       
-    elsif string.length > 1 
+    elsif string.length > 1
       split_string = self.split_string(string)
       
       int_array = self.str_arr_to_int_arr(split_string)
       
       int_array.each do |x|
-        raise "#{x} is not valid." if x < 0
+        if x > 1000 
+          x == 0 
+        elsif x < 0
+          raise "#{x} is not valid."
+        else
+          "error"
+        end 
       end
       
       summed_string = self.array_sum_method(int_array)
