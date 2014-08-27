@@ -56,12 +56,14 @@ module GiftExchange
       false
     end
   end
+  
   # Takes an Array of Arrays of gift bearing members and assigns them to each other
   #
   # Returns hash of hashes
   def self.assign_gift_givers(members)
     i = 0
     gift_giver_hash = {}
+    
     while i < (members.length - 1)
       member1 = members[i]
       member2 = members[i + 1]
