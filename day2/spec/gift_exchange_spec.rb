@@ -3,16 +3,14 @@ require_relative '../gift_exchange.rb'
 describe GiftExchange do
 
   it 'should return an array of names' do
-    expect(GiftExchance.sample_members).to eql(["Sumeet Jain", "Beth Haubert", "Sachin Jain", "Suneel Jain", "Prisha Gupta", "Richa Goyal", "Arjun Goyal", "Judy Haubert"])
+    expect(GiftExchange.sample_members).to eql(["Sumeet Jain", "Beth Haubert", "Sachin Jain", "Suneel Jain", "Prisha Gupta", "Richa Goyal", "Arjun Goyal", "Judy Haubert"])
   end
   
-  it 'should return a hash of assigned members' do
-    members = ["Sumeet Jain", "Beth Haubert", "Sachin Jain", "Suneel Jain", "Prisha Gupta", "Richa Goyal", "Arjun Goyal", "Judy Haubert"]
-
-    expect(GiftExchange.assign_gift_givers(members).class).to eql(Hash)
+  it 'should return an array of arrays' do
+    expect(GiftExchange.split_members(GiftExchange.sample_members)[0].length).to eql(2)
   end
   
-  it 'should only assign two members with different last names' do
+  it 'it should return a hash of first/last name pairs' do
   end
   
   it 'should ensure all members are assigned' do
